@@ -1,27 +1,52 @@
--- install the plugin manager [packer](https://github.com/wbthomason/packer.nvim) with the command below
--- git clone --depth 1 https://github.com/wbthomason/packer.nvim\
---  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
--- Only required if you have packer configured as `opt`
+
 vim.cmd [[packadd packer.nvim]]
+-- Only required if you have packer configured as `opt`
 
-return require('packer').startup(function(use)
-   -- Packer can manage itself
-   use 'wbthomason/packer.nvim'
 
-   -- completation
-   use {'neoclide/coc.nvim', branch = 'release'}
-   --use {'neoclide/coc.nvim', branch = 'master', run = 'yarn install --frozen-lockfile'}     --build coc from sourcecode
-   use 'mzlogin/vim-markdown-toc'
+return require('packer').startup({
+   function(use)
+      -- Packer can manage itself
+      use 'wbthomason/packer.nvim'
 
-   --file manager
-   --use 'scrooloose/nerdtree'
+      -- completation/coc
+      require('coc/coc')
+      use {'neoclide/coc.nvim', branch = 'release'}
+      --use {'neoclide/coc.nvim', branch = 'master', run = 'yarn install --frozen-lockfile'}            --build coc from sourcecode
 
-   -- Status line
-   use 'liuchengxu/eleline.vim'
+      ----file manager
+      --use 'scrooloose/nerdtree'
 
-   --markdown preview
-   use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
-end)
+      -- status line
+      use 'liuchengxu/eleline.vim'
+
+      --markdown
+      require('markdown/markdown-preview')
+      use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview', ft = 'markdown'}
+      use 'mzlogin/vim-markdown-toc'
+
+      --chinese doc
+      use 'yianwillis/vimcdoc'
+
+      --which key
+      use 'folke/which-key.nvim'
+
+      --fcitx5 switch
+      use { 'yaocccc/vim-fcitx2en', event = 'InsertLeavePre' }                                          --require vim-fcitx
+
+      ----github copilot
+      --require('pack/copilot').config()
+      --use { 'github/copilot.vim', config = "require('pack/copilot').setup()", event = 'InsertEnter' }
+
+      ----lazygit
+      --use 'kdheepak/lazygit.nvim'
+   end,
+
+
+   config = {
+      clone_timeout = false,
+      depth = 1
+      --default_url_format = 'https://github.com/%s'                                                    -- Lua format string used for "aaa/bbb" style plugins
+   },
+})
 

@@ -1,3 +1,5 @@
+--keymap rc
+
 local function map(mode, lhs, rhs, opts)
   local options = { noremap = true }
   if opts then
@@ -13,28 +15,30 @@ vim.cmd [[let mapscript=","]]
 ------------- cursor movement ---------------
 --     ^         Slow:<movement key>
 --     w         Fast:<Shift>+<movement key>
--- < a   d >     Fastest:<ctrl>+<movement key>
---     s
+-- < a   s >     Fastest:<ctrl>+<movement key>
+--     r
 --     v
 map('', 'w', 'gk', {})
-map('', 's', 'gj', {})
+map('', 'r', 'gj', {})
 map('', 'a', 'h', {})
-map('', 'd', 'l', {})
+map('', 's', 'l', {})
 map('', 'W', '5gk', {})
-map('', 'S', '5gj', {})
+map('', 'R', '5gj', {})
 map('', 'A', 'b', {})
-map('', 'D', 'w', {})
+map('', 'S', 'w', {})
 map('', '<c-a>', 'g0', {})
-map('', '<c-d>', 'g$', {})
+map('', '<c-s>', 'g$', {})
 
 -- functions
-map('', 'r', 'i', {})
-map('', 'R', 'I', {})
-map('', 't', 'a', {})
-map('', 'T', 'A', {})
-map('', 'f', 'v', {})
-map('', 'F', 'V', {})
-map('', '<c-f>', '<c-v>', {})
+map('', 'D', 'G', {})
+map('', 'dd', 'gg', {})
+map('', 'p', 'i', {})
+map('', 'P', 'I', {})
+map('', 'g', 'a', {})
+map('', 'G', 'A', {})
+map('', 't', 'v', {})
+map('', 'T', 'V', {})
+map('', '<c-t>', '<c-v>', {})
 map('', 'c', 'y', {})
 map('', 'C', 'Y', {})
 map('', 'v', 'p', {})
@@ -42,7 +46,7 @@ map('', 'x', 'd', {})
 map('', 'X', 'D', {})
 map('', '<c-q>', ':q<CR>', {})
 map('', 'Q', ':wq<CR>', {})
-map('', '<c-s>', ':w<CR>', {})
+map('', '<c-r>', ':w<CR>', {})
 map('', '<c-z>', 'u', {})
 map('', 'z', 'f', {})
 map('', 'Z', 'F', {})
@@ -51,31 +55,36 @@ map('', '<c-h>', ':%!xxd -r<CR>', {})
 --map('', '=', 'nzz', {})
 --map('', '-', 'Nzz', {})
 map('', '<CR>', 'nzz', {})
-map('', '"\"', ':nohlsearch<CR>', {})
+--map('', '<LEADER><CR>', ':nohlsearch<CR>', {})
 map('', '<LEADER><CR>', 'gf', {})
-map('', 'N', ':set nonumber<CR>:set norelativenumber<CR>', {})
-map('', '<c-n>', ':set number<CR>:set relativenumber<CR>', {})
+map('', 'K', ':set nonumber<CR>:set norelativenumber<CR>', {})
+map('', '<c-k>', ':set number<CR>:set relativenumber<CR>', {})
 
 -- split screen
-map('', '<LEADER>D', ':set splitright<CR>:vsplit<CR>', {})
+map('', '<LEADER>S', ':set splitright<CR>:vsplit<CR>', {})
 map('', '<LEADER>A', ':set nosplitright<CR>:vsplit<CR>', {})
 map('', '<LEADER>W', ':set nosplitbelow<CR>:split<CR>', {})
-map('', '<LEADER>S', ':set splitbelow<CR>:split<CR>', {})
-map ('', '<LEADER>d', '<C-w>l', {})
+map('', '<LEADER>R', ':set splitbelow<CR>:split<CR>', {})
+map ('', '<LEADER>s', '<C-w>l', {})
 map ('', '<LEADER>w', '<C-w>k', {})
 map ('', '<LEADER>a', '<C-w>h', {})
-map ('', '<LEADER>s', '<C-w>j', {})
+map ('', '<LEADER>r', '<C-w>j', {})
 map ('', '<LEADER><c-a>', '<C-w>t<C-w>H', {})
-map ('', '<LEADER><c-d>', '<C-w>t<C-w>H', {})
+map ('', '<LEADER><c-s>', '<C-w>t<C-w>H', {})
 map ('', '<LEADER><c-w>', '<C-w>t<C-w>K', {})
-map ('', '<LEADER><c-s>', '<C-w>t<C-w>K', {})
+map ('', '<LEADER><c-r>', '<C-w>t<C-w>K', {})
 map ('', '<down>', ':res +5<CR>', {})
 map ('', '<up>', ':res -5<CR>', {})
-map ('', '<left>', ':vertical resize-5<CR>', {})
-map ('', '<right>', ':vertical resize+5<CR>',{})
+map ('', '<right>', ':vertical resize-5<CR>', {})
+map ('', '<left>', ':vertical resize+5<CR>',{})
 
 -- page
-map('', 'e', ':tabe<CR>', {})
-map('', '<c-r>', ':-tabnext<CR>', {})
-map('', '<c-t>', ':+tabnext<CR>', {})
+map('', 'F', ':tabe<CR>', {})
+map('', '<c-p>', ':-tabnext<CR>', {})
+map('', '<c-g>', ':+tabnext<CR>', {})
 
+----disable
+--map('', 'h', '<none>', {})
+--map('', 'j', '<none>', {})
+--map('', 'k', '<none>', {})
+--map('', 'l', '<none>', {})
