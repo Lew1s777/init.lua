@@ -1,11 +1,14 @@
 --keymap rc
+--modify file below to disable map "gx" "g%"
+--/usr/share/nvim/runtime/plugin/netrwPlugin.vim
+--/usr/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim
 
 local function map(mode, lhs, rhs, opts)
-  local options = { noremap = true }
-  if opts then
-    options = vim.tbl_extend("force", options, opts)
-  end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+	local options = { noremap = true }
+		if opts then
+			options = vim.tbl_extend("force", options, opts)
+		end
+	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 vim.cmd [[let mapleader=" "]]
@@ -29,7 +32,20 @@ map('', 'S', 'w', {})
 map('', '<c-a>', 'g0', {})
 map('', '<c-s>', 'g$', {})
 
+map('', 'i', 'gk', {})
+map('', 'e', 'gj', {})
+map('', 'n', 'h', {})
+map('', 'o', 'l', {})
+map('', 'I', '5gk', {})
+map('', 'E', '5gj', {})
+map('', 'N', 'b', {})
+map('', 'O', 'w', {})
+map('', '<c-n>', 'g0', {})
+map('', '<c-o>', 'g$', {})
+
 -- functions
+map('', 'd0', 'g0', {})
+map('', 'd$', 'g$', {})
 map('', 'D', 'G', {})
 map('', 'dd', 'gg', {})
 map('', 'p', 'i', {})
@@ -46,7 +62,7 @@ map('', 'x', 'd', {})
 map('', 'X', 'D', {})
 map('', '<c-q>', ':q<CR>', {})
 map('', 'Q', ':wq<CR>', {})
-map('', '<c-r>', ':w<CR>', {})
+map('', '<c-w>', ':w<CR>', {})
 map('', '<c-z>', 'u', {})
 map('', 'z', 'f', {})
 map('', 'Z', 'F', {})
@@ -88,3 +104,12 @@ map('', '<c-g>', ':+tabnext<CR>', {})
 --map('', 'j', '<none>', {})
 --map('', 'k', '<none>', {})
 --map('', 'l', '<none>', {})
+
+
+map('', 'l', 'u', {})
+map('', 'L', 'U', {})
+
+map ('', 'f', ':Joshuto<CR>',{})
+
+--plan
+--<c-r> ?

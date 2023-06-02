@@ -79,10 +79,15 @@ _G.packer_plugins = {
     path = "/home/anonymous/.local/share/nvim/site/pack/packer/start/coc.nvim",
     url = "https://github.com/neoclide/coc.nvim"
   },
-  ["eleline.vim"] = {
+  ["joshuto.nvim"] = {
     loaded = true,
-    path = "/home/anonymous/.local/share/nvim/site/pack/packer/start/eleline.vim",
-    url = "https://github.com/liuchengxu/eleline.vim"
+    path = "/home/anonymous/.local/share/nvim/site/pack/packer/start/joshuto.nvim",
+    url = "https://github.com/theniceboy/joshuto.nvim"
+  },
+  ["lazygit.nvim"] = {
+    loaded = true,
+    path = "/home/anonymous/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
+    url = "https://github.com/kdheepak/lazygit.nvim"
   },
   ["markdown-preview.nvim"] = {
     commands = { "MarkdownPreview" },
@@ -92,10 +97,25 @@ _G.packer_plugins = {
     path = "/home/anonymous/.local/share/nvim/site/pack/packer/opt/markdown-preview.nvim",
     url = "https://github.com/iamcco/markdown-preview.nvim"
   },
+  ["nvim-hlchunk"] = {
+    loaded = true,
+    path = "/home/anonymous/.local/share/nvim/site/pack/packer/start/nvim-hlchunk",
+    url = "https://github.com/yaocccc/nvim-hlchunk"
+  },
+  ["nvim-lines.lua"] = {
+    loaded = true,
+    path = "/home/anonymous/.local/share/nvim/site/pack/packer/start/nvim-lines.lua",
+    url = "https://github.com/yaocccc/nvim-lines.lua"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/anonymous/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
+  },
+  ["plenary.nvim"] = {
+    loaded = true,
+    path = "/home/anonymous/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["vim-fcitx2en"] = {
     loaded = false,
@@ -109,10 +129,15 @@ _G.packer_plugins = {
     path = "/home/anonymous/.local/share/nvim/site/pack/packer/start/vim-markdown-toc",
     url = "https://github.com/mzlogin/vim-markdown-toc"
   },
-  vimcdoc = {
+  ["vim-startify"] = {
     loaded = true,
-    path = "/home/anonymous/.local/share/nvim/site/pack/packer/start/vimcdoc",
-    url = "https://github.com/yianwillis/vimcdoc"
+    path = "/home/anonymous/.local/share/nvim/site/pack/packer/start/vim-startify",
+    url = "https://github.com/mhinz/vim-startify"
+  },
+  ["vim-table-mode"] = {
+    loaded = true,
+    path = "/home/anonymous/.local/share/nvim/site/pack/packer/start/vim-table-mode",
+    url = "https://github.com/dhruvasagar/vim-table-mode"
   },
   ["which-key.nvim"] = {
     loaded = true,
@@ -129,7 +154,7 @@ pcall(vim.api.nvim_create_user_command, 'MarkdownPreview', function(cmdargs)
           require('packer.load')({'markdown-preview.nvim'}, { cmd = 'MarkdownPreview', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
         {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'markdown-preview.nvim'}, { cmd = 'MarkdownPreview' }, _G.packer_plugins)
+          require('packer.load')({'markdown-preview.nvim'}, {}, _G.packer_plugins)
           return vim.fn.getcompletion('MarkdownPreview ', 'cmdline')
       end})
 time([[Defining lazy-load commands]], false)
@@ -152,7 +177,7 @@ if _G._packer.needs_bufread == true then
 end
 _G._packer.needs_bufread = false
 
-if should_profile then save_profiles() end
+if should_profile then save_profiles(1) end
 
 end)
 

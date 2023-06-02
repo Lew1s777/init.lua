@@ -1,4 +1,5 @@
---keymap rc
+--:source ~/.config/nvim/lua/keymapqwerty.lua
+--I no longer use qwerty layout,so this conf is out of dated
 
 local function map(mode, lhs, rhs, opts)
   local options = { noremap = true }
