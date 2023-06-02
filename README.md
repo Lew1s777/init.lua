@@ -54,4 +54,4 @@ Todo
 
 Tips
 ---
-- If you use root permission,you can create a link to ```/root/.config.nvim``` so that you won't have two copy of config file and your changes will directly apply to root user.
+see [tips](./document/tip.md)
