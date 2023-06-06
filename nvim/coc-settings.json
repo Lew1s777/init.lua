@@ -1,7 +1,6 @@
-// coc-settings.json
 {
   "explorer.keyMappings.global": {
-    "i": true, // cancel default mapkey
+    "i": true, 
     "<c-o>": "noop",
 
     "*": "toggleSelection",

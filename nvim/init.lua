@@ -6,11 +6,14 @@
 --                                                
 --Read [README](./README.md) if you come up with problems.
 
--- [plugin management](./lua/plugins.lua)
+-- [neovide(a 3rd party GUI client)](./lua/neovide.lua)
+require('neovide')
+
+-- [plugin](./lua/plugins.lua)
 require('plugins')
 
--- [local config](./lua/localconf.lua)
+-- [config](./lua/localconf.lua)
 require('localconf')
 
--- [keymap](./lua/keymap.lua)
+-- [keybind](./lua/keymap.lua)
 require('keymap')

@@ -75,8 +75,11 @@ time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["coc.nvim"] = {
-    loaded = true,
-    path = "/home/anonymous/.local/share/nvim/site/pack/packer/start/coc.nvim",
+    keys = { { "", "<Plug>(coc-definition)" } },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/anonymous/.local/share/nvim/site/pack/packer/opt/coc.nvim",
     url = "https://github.com/neoclide/coc.nvim"
   },
   ["joshuto.nvim"] = {
@@ -134,15 +137,23 @@ _G.packer_plugins = {
     path = "/home/anonymous/.local/share/nvim/site/pack/packer/start/vim-startify",
     url = "https://github.com/mhinz/vim-startify"
   },
+  ["vim-startuptime"] = {
+    commands = { "StartupTime" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/anonymous/.local/share/nvim/site/pack/packer/opt/vim-startuptime",
+    url = "https://github.com/dstein64/vim-startuptime"
+  },
   ["vim-table-mode"] = {
     loaded = true,
     path = "/home/anonymous/.local/share/nvim/site/pack/packer/start/vim-table-mode",
     url = "https://github.com/dhruvasagar/vim-table-mode"
   },
-  ["which-key.nvim"] = {
+  vimspector = {
     loaded = true,
-    path = "/home/anonymous/.local/share/nvim/site/pack/packer/start/which-key.nvim",
-    url = "https://github.com/folke/which-key.nvim"
+    path = "/home/anonymous/.local/share/nvim/site/pack/packer/start/vimspector",
+    url = "https://github.com/puremourning/vimspector"
   }
 }
 
@@ -157,7 +168,19 @@ pcall(vim.api.nvim_create_user_command, 'MarkdownPreview', function(cmdargs)
           require('packer.load')({'markdown-preview.nvim'}, {}, _G.packer_plugins)
           return vim.fn.getcompletion('MarkdownPreview ', 'cmdline')
       end})
+pcall(vim.api.nvim_create_user_command, 'StartupTime', function(cmdargs)
+          require('packer.load')({'vim-startuptime'}, { cmd = 'StartupTime', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'vim-startuptime'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('StartupTime ', 'cmdline')
+      end})
 time([[Defining lazy-load commands]], false)
+
+-- Keymap lazy-loads
+time([[Defining lazy-load keymaps]], true)
+vim.cmd [[noremap <silent> <Plug>(coc-definition) <cmd>lua require("packer.load")({'coc.nvim'}, { keys = "<lt>Plug>(coc-definition)", prefix = "" }, _G.packer_plugins)<cr>]]
+time([[Defining lazy-load keymaps]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
@@ -167,8 +190,15 @@ vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-prev
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'coc.nvim'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au CmdLineEnter * ++once lua require("packer.load")({'coc.nvim'}, { event = "CmdLineEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertLeavePre * ++once lua require("packer.load")({'vim-fcitx2en'}, { event = "InsertLeavePre *" }, _G.packer_plugins)]]
+vim.cmd [[au CursorHold * ++once lua require("packer.load")({'coc.nvim'}, { event = "CursorHold *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
+  -- Function lazy-loads
+time([[Defining lazy-load function autocommands]], true)
+vim.cmd[[au FuncUndefined CocAction ++once lua require("packer.load")({'coc.nvim'}, {}, _G.packer_plugins)]]
+time([[Defining lazy-load function autocommands]], false)
 vim.cmd("augroup END")
 
 _G._packer.inside_compile = false

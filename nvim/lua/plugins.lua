@@ -5,13 +5,16 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup({
 	function(use)
-		-- Package manager
+		-- plugin manager
 		use 'wbthomason/packer.nvim'
+		
+		--start up time analyze
+        use { "dstein64/vim-startuptime", cmd = "StartupTime" }
 
 		-- completation/coc
 		require('coc/coc')
-		use {'neoclide/coc.nvim', branch = 'release'}
-		--use {'neoclide/coc.nvim', branch = 'master', run = 'yarn install --frozen-lockfile'}            --build from source
+		--use {'neoclide/coc.nvim', branch = 'release'}													--binary
+		use {'neoclide/coc.nvim', branch = 'master', run = 'yarn install --frozen-lockfile', event = { 'InsertEnter', 'CmdLineEnter', 'CursorHold' }, fn = 'CocAction', keys = '<Plug>(coc-definition)'}
 
 		--visual
 		use 'yaocccc/nvim-hlchunk'
@@ -27,7 +30,13 @@ return require('packer').startup({
 				"nvim-lua/plenary.nvim",
 			},
 		})
-
+		--use {
+		--	'gelguy/wilder.nvim',
+		--	event = 'CmdlineEnter',
+		--	config = function()
+		--		require(wilder/wilder)
+		--	end,
+		--}
 		--markdown
 		require('markdown/markdown-preview')
 		use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview', ft = 'markdown'}
@@ -39,7 +48,7 @@ return require('packer').startup({
 		--use { 'github/copilot.vim', config = "require('pack/copilot').setup()", event = 'InsertEnter' }
 
 		--debug
-		--use 'puremourning/vimspector'
+		use 'puremourning/vimspector'
 
 		--fix
 		use { 'yaocccc/vim-fcitx2en', event = 'InsertLeavePre' }		--require vim-fcitx
@@ -48,7 +57,17 @@ return require('packer').startup({
 		--help
 		--use 'yianwillis/vimcdoc'										--chinese document
 		--require('whichkey/whichkey.lua')
-		use 'folke/which-key.nvim'
+		--use 'folke/which-key.nvim'
+		--use {
+		--	"folke/which-key.nvim",
+		--	config = function()
+		--	vim.o.timeout = true
+		--	vim.o.timeoutlen = 300
+		--	require("which-key").setup {
+		--	}
+		--	end
+		--}
+
 	end,
 	config ={
 		ensure_dependencies   = true, -- Should packer install plugin dependencies?

@@ -1,4 +1,4 @@
-My Neovim Config
+my neovim config
 ===
 ```
 
@@ -10,19 +10,19 @@ My Neovim Config
         |___/                                                  
 ```
 
-Installation
+installation
 ---
 see [Installation Guide](./document/install.md)
 
-Usage
+usage
 ---
 see [keybinds && commands](./document/usage.md)
 
-Troublem shooting
+troublem shooting
 ---
 see [troublem shooting](./document/debug.md)
 
-Plugin list
+plugin list
 ---
 - [wbthomason/packer.nvim](https://github.com/wbthomason/packer.nvim) plugin manager
 - [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim) completation
@@ -39,7 +39,14 @@ Plugin list
 - [yaocccc/vim-fcitx2en](https://github.com/yaocccc/vim-fcitx2en) fcitx5 input switching
 - [folke/which-key.nvim](https://github.com/folke/which-key.nvim) keybind help
 
-Todo
+3rd party GUI client
+---
+- [neovide](https://neovide.dev/index.html)
+
+Provideing impressive animation.
+
+
+todo
 ---
 
 - switch to lua (config)
@@ -49,9 +56,10 @@ Todo
     - line ✓
     - markdown-preview ✓
     - startify ✓
+- neovide ✓
 - document ✗
 - install script ✗
 
-Tips
+tips
 ---
 see [tips](./document/tip.md)

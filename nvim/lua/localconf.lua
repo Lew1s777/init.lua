@@ -28,7 +28,7 @@ vim.o.foldlevel			= indent
 vim.o.autoindent		= true
 vim.o.smartindent		= true
 vim.o.smarttab			= true
-vim.o.expandtab			= false			--true=space indent
+vim.o.expandtab			= false				--true=space indent
 vim.o.shiftround		= true
 vim.o.tabstop			= 4
 vim.o.softtabstop		= 4
@@ -42,9 +42,4 @@ vim.cmd([[ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") 
 vim.o.updatetime		= 300
 vim.cmd [[set shortmess+=c]]
 vim.cmd('autocmd vimenter *.md exec ":MarkdownPreview"')
---vim.cmd('source ~/.config/nvim/lua/startify/startify.vim')
 vim.cmd('source ~/.config/nvim/vim/startify/startify.vim')
---vim.cmd[[
---	\ sleep 1
---	\ source ~/.unmap.vim
---	\ ]]
