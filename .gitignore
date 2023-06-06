@@ -1,3 +1,8 @@
 maintain
 nvim/plugin
 nvim/plugin/packer_compiled.lua
+nvim/vim/coc/coc.vim
+nvim/vim/coc
+nvim/vim/markdown/markdown-preview.vim
+nvim/vim/markdown
+nvim/vim/spector/spector.vim
