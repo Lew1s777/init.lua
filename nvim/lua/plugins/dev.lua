@@ -1,3 +1,4 @@
+local m = { noremap = true }
 local function map(mode, lhs, rhs, opts)
 	local options = { silent = true, noremap = true, expr = true }
 		if opts then
@@ -84,10 +85,28 @@ return {
 			map( "x" , "<leader>f" , "<Plug>(coc-format-selected)", {} )
 			map( "n" , "<leader>f" , "<Plug>(coc-format-selected)", {} )
 			
-			map( "n" , "<leader>t" , "<Plug>(coc-translator-p)", {} )
-
+			vim.cmd [[
+				nmap <Leader>t <Plug>(coc-translator-p)
+				vmap <Leader>t <Plug>(coc-translator-pv)
+				"nmap <Leader>e <Plug>(coc-translator-e)
+				"vmap <Leader>e <Plug>(coc-translator-ev)
+				"nmap <Leader>r <Plug>(coc-translator-r)
+				"vmap <Leader>r <Plug>(coc-translator-rv)
+			]]
 		end,
 	},
+	{
+		"SirVer/ultisnips",
+		dependencies = {
+			"honza/vim-snippets",
+		},
+		config = function()
+			-- vim.g.UltiSnipsExpandTrigger = ""
+			-- vim.g.UltiSnipsJumpForwardTrigger = ""
+			-- vim.g.UltiSnipsJumpBackwardTrigger = ""
+		end
+	},
+	--"quangnguyen30192/cmp-nvim-ultisnips",
 	{
 		"folke/neodev.nvim",
 		opts = {},
@@ -112,5 +131,24 @@ return {
 			vim.g.neodev_luassert = 3
 		end
 
+	},
+	{
+		"ggandor/leap.nvim",
+		config = function()
+			local leap = require('leap')
+			vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'Comment' }) -- or some grey
+			-- vim.api.nvim_set_hl(0, 'LeapMatch', { fg = 'white', bold = true, nocombine = true, })
+			-- Of course, specify some nicer shades instead of the default "red" and "blue".
+			-- vim.api.nvim_set_hl(0, 'LeapLabelPrimary', { fg = 'red', bold = true, nocombine = true, })
+			-- vim.api.nvim_set_hl(0, 'LeapLabelSecondary', { fg = 'blue', bold = true, nocombine = true, })
+			-- Try it without this setting first, you might find you don't even miss it.
+			leap.opts.highlight_unlabeled_phase_one_targets = true
+			leap.opts.safe_labels = {}
+			leap.opts.labels = { 'a', 'r', 's', 't', 'n', 'e', 'i', 'o', 'w', 'f', 'u', 'y', 'd', 'h' }
+			vim.keymap.set("n", "<ESC>", function()
+				local current_window = vim.fn.win_getid()
+				leap.leap { target_windows = { current_window } }
+			end)
+		end
 	},
 }

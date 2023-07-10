@@ -16,4 +16,13 @@ return {
 			vim.cmd[[autocmd vimenter *.md exec ":MarkdownPreview"]]
 		end,
 	},
+	{
+		"mzlogin/vim-markdown-toc",
+		cmd = "GenTocGFM",
+		ft = "markdown",
+	},
+	{
+		"dhruvasagar/vim-table-mode",
+		ft = "markdown",
+	},
 }

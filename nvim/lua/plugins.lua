@@ -34,13 +34,10 @@ vim.keymap.set("n", "<leader>l", ":Lazy<CR>", { noremap = true })
 
 require("lazy").setup({
 	--require("plugins.telescope").config,
-	require("plugins.treesitter"),
 	require("plugins.visual"),
 	require("plugins.fun"),
 	require("plugins.dev"),
-	require("plugins.leap"),
-	require("plugins.snippets"),
-	require("plugins.fzf"),
+	--require("plugins.snippets"),
 	require("plugins.ft.markdown"),
 	require("plugins.input"),
 	require("plugins.call"),
