@@ -57,5 +57,4 @@ todo
   - vimspector ✗
 - neovide support ✓
 - document ✓
-- install script ✗
 - maintain script ✗

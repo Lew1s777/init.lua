@@ -12,7 +12,7 @@ Keybind && Command to know
 
 Keybind
 ---
-- This assumes that you understand the logic of using vim, such as switching between normal mode and insert mode
+- Here assumes that you understand the logic of using vim, such as switching between normal mode and insert mode
 
 - This keybind is designed for colemak layout,if ur using qwerty layout,use lua/keymapd.lua.
 
@@ -40,7 +40,7 @@ Keybind
 |<kbd>d</kbd>|leap to line|<kbd>g</kbd>|
 |<kbd>D</kbd>|leap to last line|<kbd>G</kbd>|
 |<kbd>d</kbd><kbd>d</kbd>|leap to first line|<kbd>g</kbd><kbd>g</kbd>|
-|<kbd>⎋Esc</kbd>|leap->leap to specific char|<kbd>⎋Esc</kbd>|
+|<kbd>⎋Esc</kbd>|leap->leap to specific char||
 |<kbd>z</kbd>|find forward|<kbd>f</kbd>|
 |<kbd>Z</kbd>|find backward|<kbd>F</kbd>|
 |<kbd>c</kbd>|copy|<kbd>y</kbd>|
