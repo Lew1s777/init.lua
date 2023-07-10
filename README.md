@@ -18,10 +18,6 @@ usage
 ---
 see [keybinds && commands](./document/usage.md)
 
-troublem shooting
----
-see [troublem shooting](./document/debug.md)
-
 plugin list
 ---
 - [wbthomason/packer.nvim](https://github.com/wbthomason/packer.nvim) plugin manager
@@ -39,27 +35,27 @@ plugin list
 - [yaocccc/vim-fcitx2en](https://github.com/yaocccc/vim-fcitx2en) fcitx5 input switching
 - [folke/which-key.nvim](https://github.com/folke/which-key.nvim) keybind help
 
-3rd party GUI client
+GUI client
 ---
 - [neovide](https://neovide.dev/index.html)
 
 Provideing impressive animation.
 
+tips
+---
+see [tips](./document/tip.md)
+
+troublem shooting
+---
+see [troublem shooting](./document/debug.md)
 
 todo
 ---
 
-- switch to lua (config)
-  - main ✓
-  - plugin ✗
-    - coc ✓
-    - line ✓
-    - markdown-preview ✓
-    - startify ✓
-- neovide ✓
-- document ✗
+- switch to lua ✓
+- switch to lazy.nvim ✓
+  - vimspector ✗
+- neovide support ✓
+- document ✓
 - install script ✗
-
-tips
----
-see [tips](./document/tip.md)
+- maintain script ✗

@@ -6,3 +6,6 @@ nvim/vim/coc
 nvim/vim/markdown/markdown-preview.vim
 nvim/vim/markdown
 nvim/vim/spector/spector.vim
+nvim/lazy-lock.json
+nvim/lua/.repro
+nvim/lua/.repro/*

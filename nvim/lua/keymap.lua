@@ -1,19 +1,17 @@
 --keymap rc
---modify file below to disable map "gx" "g%"
+--modify file below to change map "gx" "g%"
 --/usr/share/nvim/runtime/plugin/netrwPlugin.vim
 --/usr/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim
-
 local function map(mode, lhs, rhs, opts)
 	local options = { noremap = true }
-		if opts then
-			options = vim.tbl_extend("force", options, opts)
-		end
+	if opts then
+		options = vim.tbl_extend("force", options, opts)
+	end
 	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-vim.cmd [[let mapleader=" "]]
-vim.cmd [[let mapscript=","]]
-
+vim.g.mapleader = " "
+vim.g.scriptleader = ","
 ------------- cursor movement ---------------
 --	   ^		 ^		both arws and neio are movement key
 --	   w		 i		Slow:<movement key>
@@ -21,25 +19,24 @@ vim.cmd [[let mapscript=","]]
 --	   r		 e		Fastest:<ctrl>+<movement key>
 --	   v		 v
 map('', 'w', 'gk', {})
-map('', 'r', 'gj', {})
-map('', 'a', 'h', {})
-map('', 's', 'l', {})
-map('', 'W', '5gk', {})
-map('', 'R', '5gj', {})
-map('', 'A', 'b', {})
-map('', 'S', 'w', {})
-map('', '<c-a>', 'g0', {})
-map('', '<c-s>', 'g$', {})
-
 map('', 'i', 'gk', {})
+map('', 'r', 'gj', {})
 map('', 'e', 'gj', {})
+map('', 'a', 'h', {})
 map('', 'n', 'h', {})
+map('', 's', 'l', {})
 map('', 'o', 'l', {})
-map('', 'I', '5gk', {})
-map('', 'E', '5gj', {})
+map('', 'W', '7gk', {})
+map('', 'I', '7gk', {})
+map('', 'R', '7gj', {})
+map('', 'E', '7gj', {})
+map('', 'A', 'b', {})
 map('', 'N', 'b', {})
+map('', 'S', 'w', {})
 map('', 'O', 'w', {})
+map('', '<c-a>', 'g0', {})
 map('', '<c-n>', 'g0', {})
+map('', '<c-s>', 'g$', {})
 map('', '<c-o>', 'g$', {})
 
 ------------- functions ----------------------
@@ -56,26 +53,26 @@ map('', 'T', 'V', {})
 map('', '<c-t>', '<c-v>', {})
 map('', 'c', 'y', {})												--copy
 map('', 'C', 'Y', {})
+--map('', '<LEADER>c', '+y', {})
+--map('', '<LEADER>C', '+Y', {})
 map('', 'v', 'p', {})												--paste
 map('', 'x', 'd', {})												--cut/delete
+map('', 'X', 'D', {})												--cut/delete
 map('', '<c-q>', ':q<CR>', {})										--quit
 map('', 'Q', ':wq<CR>', {})											--save&&quit
 map('', '<c-w>', ':w<CR>', {})										--save
 map('', '<c-z>', 'u', {})											--undo
 map('', 'z', 'f', {})												--find
 map('', 'Z', 'F', {})
---map('', 'H', ':%!xxd<CR>', {})									--hex
---map('', '<c-h>', ':%!xxd -r<CR>', {})
 map('', '<CR>', 'nzz', {})											--next result
 map('', '<S-CR>', 'Nzz', {})
---map('', '<LEADER><CR>', ':nohlsearch<CR>', {})
+map('', '<LEADER><S-CR>', ':nohlsearch<CR>', {})
 map('', '<LEADER><CR>', 'gf', {})
 map('', '?', ':%s/old/new/gc', {})									--replace
-map('', 'K', ':set nonumber<CR>:set norelativenumber<CR>', {})		--line number
-map('', '<c-k>', ':set number<CR>:set relativenumber<CR>', {})
-map('', '-', '<c-x>', {})											--number
-map('', '=', '<c-a>', {})
-map('', '<c-f>', ':setfiletype ', {})								--set filetype
+map('', '-', '<c-x>', {})											--number--
+map('', '=', '<c-a>', {})											--number++
+map('', '<LEADER>c', '~', {})
+map('', '<LEADER><c-f>', ':setfiletype ', {})						--set filetype
 
 map('', 'F', ':tabe<CR>', {})										-- page
 map('', '<c-p>', ':-tabnext<CR>', {})
@@ -92,24 +89,13 @@ map ('', '<LEADER><c-a>', '<C-w>t<C-w>H', {})						--incnmaster
 map ('', '<LEADER><c-s>', '<C-w>t<C-w>H', {})
 map ('', '<LEADER><c-w>', '<C-w>t<C-w>K', {})
 map ('', '<LEADER><c-r>', '<C-w>t<C-w>K', {})
-map ('', '<down>', ':res +5<CR>', {})								--move cutline
-map ('', '<up>', ':res -5<CR>', {})
-map ('', '<right>', ':vertical resize-5<CR>', {})
-map ('', '<left>', ':vertical resize+5<CR>',{})
+map ('', '<down>', ':res +7<CR>', {})								--move cutline
+map ('', '<up>', ':res -3<CR>', {})
+map ('', '<right>', ':vertical resize-3<CR>', {})
+map ('', '<left>', ':vertical resize+7<CR>',{})
 
---call other app(nvim plugin required)
-map ('', 'f', ':Joshuto<CR>',{})
-map ('', '<leader>dd', ':LazyGit<CR>',{})
-
---copy && paste with system clipboard								--currently not finished
-map('', '<c-c>', '+y', {})											--copy
-map('', '<c-v>', '+p', {})											--paste
-
-----disable
---map('', 'h', '<none>', {})
---map('', 'j', '<none>', {})
---map('', 'k', '<none>', {})
---map('', 'l', '<none>', {})
+--map('', 'H', ':%!xxd<CR>', {})									--hex
+--map('', '<c-h>', ':%!xxd -r<CR>', {})
 
 --plan
 --<c-r> ?

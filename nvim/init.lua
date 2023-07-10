@@ -6,14 +6,17 @@
 --                                                
 --Read [README](./README.md) if you come up with problems.
 
--- [neovide(a 3rd party GUI client)](./lua/neovide.lua)
+-- [neovide support](./lua/neovide.lua)
 require('neovide')
-
--- [plugin](./lua/plugins.lua)
-require('plugins')
 
 -- [config](./lua/localconf.lua)
 require('localconf')
 
+-- [color](./lua/color.lua)
+require('color')
+
 -- [keybind](./lua/keymap.lua)
 require('keymap')
+
+-- [plugin](./lua/plugins.lua)
+require('plugins')
