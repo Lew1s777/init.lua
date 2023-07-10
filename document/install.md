@@ -5,7 +5,7 @@ Manually
 ---
 Dependency
 
-- ``nvim`` of course(I'm currently using ``aur/neovim-nightly``)
+- ``neovim`` of course(I'm currently using ``aur/neovim-nightly``)
 
 - This config require ``pynvim``,install it with (your system shoud have ``python3`` configured before using this command)
 ```
