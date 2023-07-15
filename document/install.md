@@ -16,6 +16,9 @@ or use ``extra/python-pynvim``
 - optional require aur/``joshuto-git`` for file manager
 - optional requrie extra/``lazygit``
 
+- ``aur/neovim-vim-compat`` for link & xxd hex support
+
+
 Install
 - save your old config(if you have)
 ```
