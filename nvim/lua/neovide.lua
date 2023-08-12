@@ -1,7 +1,7 @@
 if vim.g.neovide then
-	vim.o.guifont = "SauceCodePro Nerd Font Mono,Source Code Pro,monospace:h10" -- text below applies for VimScript
+	vim.o.guifont = "SauceCodePro Nerd Font Mono,Source Code Pro,monospace:h12" -- text below applies for VimScript
 	vim.opt.linespace = 0
-	vim.g.neovide_scale_factor = 0.8
+	vim.g.neovide_scale_factor = 1.0
 	local alpha = function()													-- Helper function for transparency formatting
 	  return string.format("%x", math.floor(255 * vim.g.transparency or 0.8))
 	end

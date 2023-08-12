@@ -12,11 +12,11 @@ require('neovide')
 -- [config](./lua/localconf.lua)
 require('localconf')
 
--- [color](./lua/color.lua)
-require('color')
-
 -- [keybind](./lua/keymap.lua)
 require('keymap')
+
+-- [color](./lua/color.lua)
+require('color')
 
 -- [plugin](./lua/plugins.lua)
 require('plugins')

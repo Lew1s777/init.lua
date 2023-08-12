@@ -1,10 +1,4 @@
--- _                              _           
---| | __ _ _____   _   _ ____   _(_)_ __ ___  
---| |/ _` |_  / | | | | '_ \ \ / / | '_ ` _ \ 
---| | (_| |/ /| |_| |_| | | \ V /| | | | | | |
---|_|\__,_/___|\__, (_)_| |_|\_/ |_|_| |_| |_|
---             |___/                          
---config.defaults.lazy = true
+-- manage plugins with lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -12,7 +6,7 @@ if not vim.loop.fs_stat(lazypath) then
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
+    "--branch=stable",
     lazypath,
   })
 end
@@ -37,10 +31,12 @@ require("lazy").setup({
 	require("plugins.visual"),
 	require("plugins.fun"),
 	require("plugins.dev"),
-	--require("plugins.snippets"),
+	require("plugins.ai"),
+	require("plugins.fs"),
 	require("plugins.ft.markdown"),
-	require("plugins.input"),
-	require("plugins.call"),
+	require("plugins.ft.git"),
+	require("plugins.move"),
+	require("plugins.fcitx"),				-- input fix
 	require("plugins.help"),
-	require("plugins.startuptime"),
+	require("plugins.misc"),
 })

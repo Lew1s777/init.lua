@@ -54,11 +54,26 @@ return {
 	},
 	{	
 		"Lew1s777/nvim-lines.lua",
-		lazy = false,
+		event = 'VimEnter',
+		before = function()
+			vim.g.line_hl = { 
+				none = 'NONE', 
+				light = 'NONE',
+				dark = 'NONE',
+				['break'] = '244',
+				space = 238 
+			}
+		end,
 	},
 	
 	{
 		"shellRaining/hlchunk.nvim",
+		lazy = true,
+		event = {
+			"VeryLazy",
+			"CursorMoved",
+			"InsertEnter",
+		},
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 		},
@@ -88,6 +103,11 @@ return {
 	
 	{
 		"Bekaboo/dropbar.nvim",
+		lazy = true,
+		event = {
+			"VeryLazy",
+			"CursorMoved",
+		},
 		commit = "19011d96959cd40a7173485ee54202589760caae",
 		config = function()
 			local api = require("dropbar.api")
@@ -160,6 +180,7 @@ return {
 	
 	{
 		"petertriho/nvim-scrollbar",
+		event = "VeryLazy",
 		dependencies={
 			"kevinhwang91/nvim-hlslens",
 			"lewis6991/gitsigns.nvim",
@@ -190,6 +211,7 @@ return {
 
 	{
 		"Lew1s777/nvim-notify",
+		event = "VeryLazy",
 		config = function()
 			vim.cmd[[
 				highlight NotifyERRORBorder guifg=#8A1F1F
@@ -230,6 +252,10 @@ return {
 	},
 	{
 		"gelguy/wilder.nvim",
+		event = {
+			"CmdLineEnter",
+			"VeryLazy",
+		},
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},
@@ -243,15 +269,15 @@ return {
 			wilder.set_option('renderer', wilder.popupmenu_renderer(
 				wilder.popupmenu_palette_theme({
 					highlights = {
-						border = 'Normal', -- highlight to use for the border
+						border = 'Normal',
 					},
 					left = { ' ', wilder.popupmenu_devicons() },
 					right = { ' ', wilder.popupmenu_scrollbar() },
 					border = 'rounded',
-					max_height = '75%',  -- max height of the palette
-					min_height = 0,      -- set to the same as 'max_height' for a fixed height window
-					prompt_position = 'top', -- 'top' or 'bottom' to set the location of the prompt
-					reverse = 0,         -- set to 1 to reverse the order of the list, use in combination with 'prompt_position'
+					max_height = '75%',
+					min_height = 0,
+					prompt_position = 'top',
+					reverse = 0,
 				})
 			))
 			wilder.set_option('pipeline', {
@@ -267,6 +293,10 @@ return {
 
 	{
 		"yamatsum/nvim-cursorline",
+		event = {
+			"VeryLazy",
+			"CursorMoved",
+		},
 		config=function()
 			require('nvim-cursorline').setup {
 				cursorline = {
@@ -283,53 +313,146 @@ return {
 		end,
 	},
 	
-	--{
-	--	"mhinz/vim-startify",
-	--	lazy = false,
-	--	before = function()
-	--		vim.g.startify_enable_special		= 1
-	--		vim.g.startify_files_number			= 4
-	--		vim.g.startify_relative_path		= 1
-	--		vim.g.startify_change_to_dir		= 0
-	--		vim.g.startify_update_oldfiles		= 0
-	--		vim.g.startify_session_autoload		= 0
-	--		vim.g.startify_session_persistence	= 0
-	--		vim.g.startify_skiplist = {
-	--			"COMMIT_EDITMSG",
-	--			"bundle/.*/doc",
-	--			"/media/data/usrdir/picture/misc",
-	--			"/src/ct/*",
-	--		}
-	--		vim.cmd[[
-	--			if has('nvim')
-	--				autocmd TabNewEntered * Startify
-	--			else
-	--				autocmd BufWinEnter *
-	--					\ if !exists('t:startify_new_tab')
-	--					\     && empty(expand('%'))
-	--					\     && empty(&l:buftype)
-	--					\     && &l:modifiable |
-	--					\   let t:startify_new_tab = 1 |
-	--					\   Startify |
-	--					\ endif
-	--			endif
-	--			let g:startify_bookmarks = [
-	--				\ { 'p': '~/.config/nvim/init.lua' },
-	--				\ { 'c': '~/.config/nvim/lua/plugins.lua' },
-	--				\ { 'v': '~/.config/nvim/lua/localconf.lua' },
-	--				\ { 't': '~/.config/nvim/lua/keymap.lua' },
-	--				\ ]
-	--			let g:startify_custom_header =
-	--				\ startify#fortune#cowsay('', '═','║','╔','╗','╝','╚')
-	--			hi StartifyBracket ctermfg=240
-	--			hi StartifyFile    ctermfg=147
-	--			hi StartifyFooter  ctermfg=240
-	--			hi StartifyHeader  ctermfg=114
-	--			hi StartifyNumber  ctermfg=215
-	--			hi StartifyPath    ctermfg=245
-	--			hi StartifySlash   ctermfg=240
-	--			hi StartifySpecial ctermfg=240
-	--		]]
-	--	end
-	--},
+	{  
+		"glepnir/dashboard-nvim",
+		event = 'VimEnter',
+		config = function()
+			require('dashboard').setup {
+				theme = 'doom',
+				config = {
+					week_header = { enable = true },
+					-- header = {"nageyqma"},
+					center = {
+						{
+							icon = ' ',
+							desc = 'Empty file',
+							key = 'E',
+							action = 'enew'
+						},
+						{
+							icon = ' ',
+							icon_hl = 'Title',
+							desc = 'Find file',
+							desc_hl = 'String',
+							key = 'F',
+							key_hl = 'Number',
+							action = "Joshuto",
+						},
+						{
+							icon = ' ',
+							desc = 'Nvim RC',
+							key = 'C',
+							action = 'edit ~/.config/nvim/init.lua'
+						},
+						{
+							icon =' ',
+							icon_hl = 'Title',
+							desc = 'Coc config',
+							desc_hl = 'String',
+							key = 'O',
+							key_hl = 'Number',
+							action = 'CocConfig',
+						},
+						{
+							icon = ' ',
+							desc = 'Health check',
+							key = 'H',
+							action = 'checkhealth'
+						},
+						{
+							icon =' ',
+							icon_hl = 'Title',
+							desc = 'Version',
+							desc_hl = 'String',
+							key = 'V',
+							key_hl = 'Number',
+							action = 'version',
+						},
+						{
+							icon = ' ',
+							desc = 'Keymap',
+							key = '?',
+							action = 'WhichKey'
+						},
+						{
+							icon =' ',
+							icon_hl = 'Title',
+							desc = 'Lazygit',
+							desc_hl = 'String',
+							key = 'L',
+							key_hl = 'Number',
+							action = 'LazyGit',
+						},
+						{
+							icon = ' ',
+							desc = 'Time',
+							key = 'T',
+							action = '!date'
+						},
+						{
+							icon =' ',
+							icon_hl = 'Title',
+							desc = 'Greeting',
+							desc_hl = 'String',
+							key = 'G',
+							key_hl = 'Number',
+							action = '!figlet Hello',
+						},
+						{
+							icon = ' ',
+							desc = 'Manage plugins',
+							key = 'P',
+							action = '!date'
+						},
+						{
+							icon =' ',
+							icon_hl = 'Title',
+							desc = 'Clean plugins',
+							desc_hl = 'String',
+							key = '<C-C>',
+							key_hl = 'Number',
+							action = 'Lazy update',
+						},
+						{
+							icon = ' ',
+							desc = 'Update plugins',
+							key = 'U',
+							action = '!figlet HELLO'
+						},
+						{
+							icon ='󰊳 ',
+							icon_hl = 'Title',
+							desc = 'Music album list',
+							desc_hl = 'String',
+							key = 'M',
+							key_hl = 'Number',
+							action = '!mpc ls',
+						},
+						{
+							icon = '✗ ',
+							desc = 'Quit',
+							key = 'Q',
+							action = 'quit'
+						},
+						{
+							icon = '✗ ',
+							icon_hl = 'Title',
+							desc = 'Quit all',
+							desc_hl = 'String',
+							key = '<C-Q>',
+							key_hl = 'Number',
+							action = 'quitall'
+						},
+					},
+					footer = {"Logic takes you from A to B,while imagination can take you anywhere"},
+				}
+			}
+			--vim.cmd [[
+			--	let g:dashboard_default_executive = 'telescope'
+			--	autocmd FileType dashboard nnoremap <silent> <buffer> <CR> :<C-u>DashboardFindFile<CR>
+			--	autocmd FileType dashboard nnoremap <silent> <buffer> q :<C-u>DashboardClose<CR>
+			--]]
+		end,
+		dependencies = { {'nvim-tree/nvim-web-devicons'}},
+	},
 }

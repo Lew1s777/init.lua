@@ -8,7 +8,7 @@ vim.cmd [[
 ]]
 
 vim.o.list						= false
-vim.o.updatetime				= 300				--100 is recommended on PC
+vim.o.updatetime				= 1000				--300/100 is recommended on PC
 vim.o.hidden					= true				--required by coc
 vim.g.indentLine_concealcursor	= 0
 vim.o.number					= true
